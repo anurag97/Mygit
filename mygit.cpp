@@ -3,8 +3,19 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fstream>
-#include "status.hpp"
+#include<dirent.h>
 using namespace std;
+#include "status.hpp"
+#include "add2.hpp"
+namespace gitstatus{
+    int status();
+}
+namespace gitadd{
+    int add();
+}
+using namespace gitstatus;
+using namespace gitadd;
+
 int init()
 {
     bool gitdircreate = false;
@@ -78,9 +89,9 @@ int init()
         return 0;
 };
 
-void add(){
+// void add(){
 
-};
+// };
 
 int main(int argc, char *argv[])
 {
@@ -105,7 +116,11 @@ int main(int argc, char *argv[])
         }
         else if (cmd == "status")
         {
-            status();
+            gitstatus::status();
+            exit(EXIT_SUCCESS);
+        }
+        else if(cmd == "add"){
+             gitadd::add();
             exit(EXIT_SUCCESS);
         }
     }

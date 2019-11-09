@@ -1,3 +1,5 @@
+namespace gitstatus
+{
 #include <iostream>
 #include <bits/stdc++.h>
 #include <unistd.h>
@@ -154,4 +156,5 @@ int status()
     {
         return 0;
     }
+}
 }
