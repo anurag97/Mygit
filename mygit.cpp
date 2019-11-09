@@ -7,15 +7,20 @@
 using namespace std;
 #include "status.hpp"
 #include "add2.hpp"
+#include "commit.hpp"
 namespace gitstatus{
     int status();
 }
 namespace gitadd{
     int add();
 }
+namespace gitCommit
+{
+    int commit();
+}
 using namespace gitstatus;
 using namespace gitadd;
-
+using namespace gitCommit;
 int init()
 {
     bool gitdircreate = false;
@@ -119,9 +124,14 @@ int main(int argc, char *argv[])
             gitstatus::status();
             exit(EXIT_SUCCESS);
         }
-        else if(cmd == "add"){
+        else if(cmd == "add"){  
              gitadd::add();
             exit(EXIT_SUCCESS);
         }
+		else if(cmd == "commit")
+		{
+			gitCommit::commit();
+			exit(EXIT_SUCCESS);
+		}
     }
 }
