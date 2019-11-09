@@ -159,7 +159,7 @@ vector<string> get_files_from(string path){
     while((entry = readdir(dir)) != NULL)
     {
         string fname = entry->d_name;
-        if(fname=="." || fname ==".." || fname == ".mygit" || fname == "a.out" || fname == ".vscode")
+        if(fname=="." || fname ==".." || fname == ".mygit" || fname == "a.out" || fname == ".vscode" ||fname =="mygit")
         {
             continue;
         }

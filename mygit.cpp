@@ -4,23 +4,30 @@
 #include <sys/types.h>
 #include <fstream>
 #include<dirent.h>
+
 using namespace std;
 #include "status.hpp"
 #include "add2.hpp"
-#include "commit.hpp"
+#include"gitlog.hpp"
 namespace gitstatus{
     int status();
 }
 namespace gitadd{
     int add();
 }
-namespace gitCommit
-{
-    int commit();
+namespace gitlog{
+    void writeinlog();
+    void printlog();
 }
 using namespace gitstatus;
 using namespace gitadd;
-using namespace gitCommit;
+using namespace gitlog;
+
+
+
+
+
+
 int init()
 {
     bool gitdircreate = false;
@@ -59,6 +66,11 @@ int init()
         fout << num << endl;
     }
     fout.close();
+
+    ofstream flog;
+    flog.open("mygit_log.txt", ios::out);
+    flog.close();
+
 
     if (mkdir("0", 0777) == -1)
     {
@@ -101,7 +113,7 @@ int init()
 int main(int argc, char *argv[])
 {
     string cmd;
-
+    
     while (true)
     {
         cmd = argv[1];
@@ -110,28 +122,47 @@ int main(int argc, char *argv[])
         {
             if (init())
             {
-                cout << "Mygit initialised!!\n";
+             
+               string temp2 = "Mygit initialised!!";
+               writeinlog(temp2);
+               cout<<temp2<<endl;
                 exit(EXIT_SUCCESS);
             }
             else
             {
-                cout << "Sorry! Error in initialisation!!" << endl;
+                string temp =  "Sorry! Error in initialisation!!";
+                writeinlog(temp);
+                cout<<temp<<endl;
                 exit(EXIT_SUCCESS);
             }
         }
         else if (cmd == "status")
         {
-            gitstatus::status();
+            if(gitstatus::status()){
+            string temp =  "Status executed!";
+            writeinlog(temp);
+            cout<<temp<<endl;
+            
+            exit(EXIT_SUCCESS);
+            }
+            else {
+                string temp = "Error in status!";
+                writeinlog(temp);
+                cout<<temp<<endl;
+                exit(EXIT_SUCCESS);
+            }
+        }
+        else if(cmd == "add"){
+             if(gitadd::add()){
+             string temp = "Mygit add executed";
+             
+             
+            exit(EXIT_SUCCESS);
+             }
+        }
+        else if(cmd == "log"){
+            gitlog::printlog();
             exit(EXIT_SUCCESS);
         }
-        else if(cmd == "add"){  
-             gitadd::add();
-            exit(EXIT_SUCCESS);
-        }
-		else if(cmd == "commit")
-		{
-			gitCommit::commit();
-			exit(EXIT_SUCCESS);
-		}
     }
 }
