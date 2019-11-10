@@ -7,8 +7,29 @@
 
 using namespace std;
 #include "status.hpp"
+//#include "rollback.hpp"
 #include "add2.hpp"
 #include"gitlog.hpp"
+#include"commit.hpp"
+#include"rollback.hpp"
+#include"retrieve_ver_no.hpp"
+#include "retrieve_sha_file.hpp"
+
+namespace retrieve_sha_file
+{
+
+void retrieve_sha_file();
+} // namespace retrieve_ver_no
+
+
+
+
+namespace retrieve_ver_no
+{
+string retrieve_ver_no();
+} // namespace retrieve_ver_no
+
+
 namespace gitstatus{
     int status();
 }
@@ -19,11 +40,15 @@ namespace gitlog{
     void writeinlog();
     void printlog();
 }
+namespace gitCommit
+{
+    int commit();
+}
 using namespace gitstatus;
 using namespace gitadd;
 using namespace gitlog;
-
-
+using namespace gitCommit;
+using namespace retrieve_ver_no;
 
 
 
@@ -117,6 +142,7 @@ int main(int argc, char *argv[])
     while (true)
     {
         cmd = argv[1];
+
         //cout << argv[1] << endl;
         if (cmd == "init")
         {
@@ -146,9 +172,9 @@ int main(int argc, char *argv[])
             exit(EXIT_SUCCESS);
             }
             else {
-                string temp = "Error in status!";
-                writeinlog(temp);
-                cout<<temp<<endl;
+               // string temp = "Error in status!";
+                //writeinlog(temp);
+                //cout<<temp<<endl;
                 exit(EXIT_SUCCESS);
             }
         }
@@ -164,5 +190,39 @@ int main(int argc, char *argv[])
             gitlog::printlog();
             exit(EXIT_SUCCESS);
         }
+        else if(cmd == "commit")
+		{
+			gitCommit::commit();
+			exit(EXIT_SUCCESS);
+		}
+        else if(cmd == "retrieve_ver_no")
+        {
+            retrieve_ver_no::retrieve_ver_no();
+            exit(EXIT_SUCCESS);
+
+        }
+        else if(cmd == "retrieve")
+        { 
+            string cmd1=argv[2];
+            if(cmd1 != "-a")
+            {
+                retrieve_sha_file::retrieve_sha_file(argv[2],argv[3]);
+                exit(EXIT_SUCCESS);
+            }
+            else
+            {
+                string ver_no=retrieve_ver_no::retrieve_ver_no();
+                cout<<"ver_no"<<endl;
+                int curr_ver=atoi(ver_no.c_str());
+                roll_back(atoi(argv[3]),curr_ver);
+                exit(EXIT_SUCCESS);
+            }
+        }
+        else
+        {
+            cout<<"Wrong Command:"<<endl;
+        }
+        
     }
+}
 }
