@@ -8,8 +8,8 @@ string logpath;
 char cwd[PATH_MAX];
 string getcurrtime(){
     time_t curr_time;
-	curr_time = time(NULL);
-	tm *tm_local = localtime(&curr_time);
+    curr_time = time(NULL);
+    tm *tm_local = localtime(&curr_time);
     string t ="";
     string thour =  to_string(tm_local->tm_hour);
     string tmin = to_string(tm_local->tm_min);
@@ -32,10 +32,13 @@ void setlogpath(){
 }
 
 void writeinlog(string logdetails){
-ofstream flog;
+std::ofstream flog;
 setlogpath();
-flog.open(logpath,ios::app);
-flog<<getcurrtime()<<" "<<logdetails<<endl;
+cout<<logpath<<endl;
+flog.open(logpath,std::ios::app);
+string currtime = getcurrtime();
+cout<<currtime<<endl;
+flog<<currtime<<":"<<logdetails<<endl;
 flog.close();
 }
 
@@ -56,3 +59,5 @@ void printlog(){
 
 }
 }
+
+
