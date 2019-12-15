@@ -1,5 +1,5 @@
 # Mygit
-A version control system having subset of features of GIT.&nbsp;
+A version control system having subset of features of GIT.\
 Mygit can be initiated inside any directory. Handles All kinds of Files except directories.&nbsp;
 
 How to use?&nbsp;
