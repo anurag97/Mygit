@@ -10,15 +10,18 @@ How to use?\
 \
 Examples for commands:\
 \
-i)    mygit init&nbsp;
-ii)   mygit status&nbsp;
-iii)  mygit add&nbsp;
-iv)   mygit commit&nbsp;
-v)    mygit rollback&nbsp;
-vi)   mygit retrieve -a versionno&nbsp;
-vii)  mygit retrieve SHA versionno&nbsp;
-viii) mygit log&nbsp;
-ix)   mygit push&nbsp;
-x)    mygit pull &nbsp;
-xi)   mygit merge source_file target_file&nbsp;
+i)    mygit init&nbsp;\
+ii)   mygit status&nbsp;\
+iii)  mygit add&nbsp;\
+iv)   mygit commit&nbsp;\
+v)    mygit rollback&nbsp;\
+vi)   mygit retrieve -a versionno&nbsp;\
+vii)  mygit retrieve SHA versionno&nbsp;\
+viii) mygit log&nbsp;\
+ix)   mygit push&nbsp;\
+x)    mygit pull &nbsp;\
+xi)   mygit merge source_file target_file&nbsp;\
+
+\
+Namaskaar!
 
