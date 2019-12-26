@@ -20,6 +20,8 @@ vii)  mygit retrieve SHA versionno&nbsp;\
 viii) mygit log&nbsp;\
 ix)   mygit push&nbsp;\
 x)    mygit pull &nbsp;\
+
+Still to be implemented.
 xi)   mygit merge source_file target_file&nbsp;\
 
 \
